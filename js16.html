@@ -1,0 +1,54 @@
+<!-- ตัวอย่างที่ 16: สไลด์โชว์รูปภาพ (Image Slideshow) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ตัวอย่างที่ 16</title>
+</head>
+
+<body>
+    <div id="example16">
+        <h3>🖼️สไลด์โชว์รูปภาพ </h3>
+        <div class="slideshow">
+            <div>
+                <img id="slideImage" src="images/1.png" alt="slideshow" />
+            </div>
+            <button onclick="changeSlide(-1)">← ก่อนหน้า</button>
+            <button onclick="changeSlide(1)">ถัดไป →</button>
+        </div>
+
+        <style>
+            .slideshow {
+                text-align: center;
+            }
+
+            .slideshow img {
+                max-width: 400px;
+                height: 300px;
+                margin: 10px;
+            }
+        </style>
+
+        <script>
+            /* สร้าง array เก็บ URLs รูปภาพ*/
+            const images = [
+                "images/2.png",
+                "images/3.png",
+                "images/4.png",
+            ];
+            let currentSlide = 0;
+
+            /* ฟังก์ชันเปลี่ยนสไลด์ */
+            function changeSlide(direction) {
+                /* คำนวณ index ของสไลด์ถัดไป */
+                currentSlide =
+                    (currentSlide + direction + images.length) % images.length;
+                /* อัพเดทรูปภาพ */
+                document.getElementById("slideImage").src = images[currentSlide];
+            }
+        </script>
+    </div>
+</body>
+</html>
